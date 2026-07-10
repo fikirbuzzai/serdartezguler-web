@@ -1,0 +1,91 @@
+@import "tailwindcss";
+
+/* ── Design Tokens ── */
+:root {
+  --bg:     #08080E;
+  --s1:     #0F0F18;
+  --s2:     #16161F;
+  --s3:     #1E1E2A;
+  --text:   #F0F0EB;
+  --t2:     #8A8A82;
+  --t3:     #4A4A52;
+  --accent: #4F7EFF;
+  --ad:     rgba(79,126,255,.10);
+  --ab:     rgba(79,126,255,.22);
+  --green:  #25D366;
+  --br:     rgba(240,240,235,.055);
+  --bra:    rgba(79,126,255,.22);
+  --r:      10px;
+  --max:    1160px;
+}
+
+[data-theme="light"] {
+  --bg:   #F5F5F2;
+  --s1:   #FFFFFF;
+  --s2:   #EEEEEB;
+  --s3:   #E4E4E0;
+  --text: #0A0A0F;
+  --t2:   #48484E;
+  --t3:   #909090;
+  --accent: #3B6FEF;
+  --ad:   rgba(59,111,239,.09);
+  --ab:   rgba(59,111,239,.20);
+  --br:   rgba(10,10,15,.07);
+  --bra:  rgba(59,111,239,.20);
+}
+
+/* ── Base ── */
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background:   var(--bg);
+  color:        var(--text);
+  font-family:  var(--font-inter), system-ui, -apple-system, sans-serif;
+  line-height:  1.65;
+  overflow-x:   hidden;
+  -webkit-font-smoothing: antialiased;
+  transition:   background .3s, color .3s;
+}
+
+/* ── Animations ── */
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: .4; transform: scale(1.2); }
+}
+
+@keyframes agGrad {
+  0%   { background-position: 0 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes apPulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: .4; transform: scale(1.5); }
+}
+
+/* ── Scroll fade (progressive enhancement) ── */
+.fi { opacity: 1; transform: none; }
+
+.js-ready .fi-anim {
+  opacity:    0;
+  transform:  translateY(18px);
+  transition: opacity .55s ease, transform .55s ease;
+}
+.js-ready .fi-anim.vis {
+  opacity:   1;
+  transform: translateY(0);
+}
+.fi-anim.d1 { transition-delay: .08s; }
+.fi-anim.d2 { transition-delay: .16s; }
+.fi-anim.d3 { transition-delay: .24s; }
+.fi-anim.d4 { transition-delay: .32s; }
+
+/* Font loading via <link> in layout */
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
